@@ -17,16 +17,16 @@ const GameGrid = () => {
 				spacing={5}>
 				{isLoading &&
 					skeletons.map((s) => ( // if loading
-						<GameCardContainer>
-							<GameCardSkeleton key={s}></GameCardSkeleton>
+						<GameCardContainer key={s}>
+							<GameCardSkeleton ></GameCardSkeleton>
 						</GameCardContainer>
 					))}
 				{games.map(
 					(
 						game 
 					) => (// not loading
-						<GameCardContainer>
-              <GameCard key={game.id} game={game} />
+						<GameCardContainer key={game.id}>
+              <GameCard  game={game} />
             </GameCardContainer>
 					)
 				)}
