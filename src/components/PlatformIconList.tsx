@@ -23,7 +23,7 @@ const PlatformIconList = ({platforms}: Props) => {
     ios: MdPhoneIphone,
     web: BsGlobe,
   }
-  return (<HStack marginY={1}>{platforms.map(platform => <Icon key={platform.slug} as={iconMap[platform.slug]} color='orange.800'/>)}</HStack>)
+  return (<HStack marginY={1}>{platforms.map(platform => <Icon key={platform.id} as={iconMap[platform.slug]} color='orange.800'/>)}</HStack>)
 }
  
 export default PlatformIconList;
