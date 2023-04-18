@@ -11,7 +11,7 @@ interface Props{
 }
 
 const GameGrid = ({ gameQuery}: Props) => {
-	const { data: games, error, isLoading } = useGames();
+	const { data: games, error, isLoading } = useGames(gameQuery);
   const filteredGames = filter(games, gameQuery.genre, gameQuery.platform);
 	const skeletons = [...Array(15).keys()]; // placeholders
 
