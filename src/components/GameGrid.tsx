@@ -4,20 +4,35 @@ import GameCard from './GameCard';
 import GameCardSkeleton from './GameCardSkeleton';
 import GameCardContainer from './GameCardContainer';
 import { Genre } from '../hooks/useGenres';
+import { Platform  } from '../hooks/usePlatforms';
+import { Game } from './../hooks/useGames';
 
 interface Props{
   selectedGenre: Genre | null;
+  selectedPlatform: Platform | null;
 }
 
-const GameGrid = ({ selectedGenre}: Props) => {
+const GameGrid = ({ selectedGenre, selectedPlatform}: Props) => {
 	const { data: games, error, isLoading } = useGames();
 	const skeletons = [...Array(15).keys()]; // placeholders
 
   function filterGames(){
-    if(!selectedGenre)
-      return games;
-    // else 
-    return games.filter( game => game.genres.some(genre => genre.name === selectedGenre.name));
+    // == helper functions ==
+    const filterByGenre = (gamesSubset: Game[]) => gamesSubset.filter( game => game.genres.some(genre => genre.name === selectedGenre?.name));
+
+    const filterByPlatform = (gamesSubset: Game[]) => gamesSubset.filter( game => game.parent_platforms.some(({platform}) => platform.name === selectedPlatform?.name));
+    
+    // == filters ==
+    if(selectedGenre && selectedPlatform)
+      return filterByPlatform(filterByGenre(games));
+
+    if(selectedGenre)
+      return filterByGenre(games);
+
+    if(selectedPlatform)
+      return filterByPlatform(games);
+    // else apply no filter
+    return games;
   }
 
 	return (
