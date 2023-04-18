@@ -1,39 +1,19 @@
-import { Text, SimpleGrid, HStack, filter } from '@chakra-ui/react';
+import { Text, SimpleGrid } from '@chakra-ui/react';
 import useGames from './../hooks/useGames';
 import GameCard from './GameCard';
 import GameCardSkeleton from './GameCardSkeleton';
 import GameCardContainer from './GameCardContainer';
-import { Genre } from '../hooks/useGenres';
-import { Platform  } from '../hooks/usePlatforms';
-import { Game } from './../hooks/useGames';
+import { GameQuery } from '../App';
+import filter from '../services/filter';
 
 interface Props{
-  selectedGenre: Genre | null;
-  selectedPlatform: Platform | null;
+  gameQuery: GameQuery;  // { genre: ___ , platform: ___ }
 }
 
-const GameGrid = ({ selectedGenre, selectedPlatform}: Props) => {
+const GameGrid = ({ gameQuery}: Props) => {
 	const { data: games, error, isLoading } = useGames();
+  const filteredGames = filter(games, gameQuery.genre, gameQuery.platform);
 	const skeletons = [...Array(15).keys()]; // placeholders
-
-  function filterGames(){
-    // == helper functions ==
-    const filterByGenre = (gamesSubset: Game[]) => gamesSubset.filter( game => game.genres.some(genre => genre.name === selectedGenre?.name));
-
-    const filterByPlatform = (gamesSubset: Game[]) => gamesSubset.filter( game => game.parent_platforms.some(({platform}) => platform.name === selectedPlatform?.name));
-    
-    // == filters ==
-    if(selectedGenre && selectedPlatform)
-      return filterByPlatform(filterByGenre(games));
-
-    if(selectedGenre)
-      return filterByGenre(games);
-
-    if(selectedPlatform)
-      return filterByPlatform(games);
-    // else apply no filter
-    return games;
-  }
 
 	return (
 		<>
@@ -48,7 +28,7 @@ const GameGrid = ({ selectedGenre, selectedPlatform}: Props) => {
 							<GameCardSkeleton ></GameCardSkeleton>
 						</GameCardContainer>
 					))}
-				{filterGames().map(
+				{filteredGames.map(
 					(
 						game 
 					) => (// not loading
