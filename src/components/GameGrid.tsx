@@ -15,9 +15,10 @@ const GameGrid = ({ gameQuery}: Props) => {
   const filteredGames = filter(games, gameQuery.genre, gameQuery.platform);
 	const skeletons = [...Array(15).keys()]; // placeholders
 
+  if(error)
+    return <Text>{error}</Text>;
+
 	return (
-		<>
-			{error && <Text>{error}</Text>}
 			<SimpleGrid
 				columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
 				padding={3}
@@ -38,7 +39,6 @@ const GameGrid = ({ gameQuery}: Props) => {
 					)
 				)}
 			</SimpleGrid>
-		</>
 	);
 };
 
