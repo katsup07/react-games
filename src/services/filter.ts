@@ -1,8 +1,11 @@
 import { Genre } from '../hooks/useGenres';
 import { Platform  } from '../hooks/usePlatforms';
+import { GamesData } from '../hooks/useGames';
 import { Game } from '../hooks/useGames';
 
-function filter(games: Game[], selectedGenre: Genre | null, selectedPlatform: Platform | null){
+function filter(gamesData: GamesData, selectedGenre: Genre | null, selectedPlatform: Platform | null){
+  const { results: games } = gamesData;
+
   // == helper functions ==
   const filterByGenre = (gamesSubset: Game[]) => gamesSubset.filter( game => game.genres.some(genre => genre.name === selectedGenre?.name));
 

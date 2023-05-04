@@ -4,6 +4,7 @@ import GameCard from './GameCard';
 import GameCardSkeleton from './GameCardSkeleton';
 import GameCardContainer from './GameCardContainer';
 import { GameQuery } from '../App';
+import { Game } from './../hooks/useGames';
 import filter from '../services/filter';
 
 interface Props{
@@ -11,12 +12,14 @@ interface Props{
 }
 
 const GameGrid = ({ gameQuery}: Props) => {
-	const { data: games, error, isLoading } = useGames(gameQuery);
-  const filteredGames = filter(games, gameQuery.genre, gameQuery.platform);
+	const { data: gamesData, error, isLoading } = useGames(gameQuery);
+  let filteredGames;
+  if(gamesData)
+    filteredGames = filter(gamesData, gameQuery.genre, gameQuery.platform);
 	const skeletons = [...Array(15).keys()]; // placeholders
 
   if(error)
-    return <Text>{error}</Text>;
+    return <Text>{error.message}</Text>;
 
 	return (
 			<SimpleGrid
@@ -29,7 +32,7 @@ const GameGrid = ({ gameQuery}: Props) => {
 							<GameCardSkeleton ></GameCardSkeleton>
 						</GameCardContainer>
 					))}
-				{filteredGames.map(
+				{filteredGames?.map(
 					(
 						game 
 					) => (// not loading
