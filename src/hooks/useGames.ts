@@ -21,15 +21,15 @@ const useGames = (gameQuery: GameQuery) => useInfiniteQuery<FetchResponse<Game>,
   queryFn: ( {pageParam = 1 }) => apiClient.getAll(
     {
     params: {
-            genres: gameQuery.genre?.id,
-            parent_platforms: gameQuery.platform?.id,
+            genres: gameQuery.genreId,
+            parent_platforms: gameQuery.platformId,
       			ordering: gameQuery.sortOrder,
       			search: gameQuery.searchText,
             page: pageParam,
       		},
   }
   ),
-  staleTime: 60 * 60 * 1000, 
+  staleTime: 24 * 60 * 60 * 1000, // 1day
   getNextPageParam: (lastPage, allPages) => {
     console.log('getting next page...');
     console.log('lastPage.results.length = ', lastPage.results.length);

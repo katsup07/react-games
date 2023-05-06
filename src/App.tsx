@@ -1,23 +1,21 @@
-import { Grid, GridItem, Show, Button, Box } from '@chakra-ui/react';
+import { Grid, GridItem, Show} from '@chakra-ui/react';
 import NavBar from './components/NavBar';
 import GameGrid from './components/GameGrid';
 import GenreList from './components/GenreList';
 import { useState } from 'react';
-import { Genre } from './hooks/useGenres';
 import PlatformSelector from './components/PlatformSelector';
-import { Platform } from './hooks/usePlatforms';
 import SortSelector from './components/SortSelector';
 import GameHeading from './components/GameHeading';
 
 export interface GameQuery{
-  genre: Genre | null;
-  platform: Platform | null;
+  genreId?: number;
+  platformId?: number;
   sortOrder: string;
   searchText: string;
 }
 
 function App() {
-  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery); // { genre:, platform:, sortOrder:, searchText:, }
+  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery); // { genreId:, platformId:, sortOrder:, searchText:, }
   
 	return (
 		<>
@@ -42,12 +40,12 @@ function App() {
         </GridItem>
         <Show above='lg'>
           <GridItem area='aside' border='1px solid salmon' padding="0.3rem" borderRadius='0.3rem' marginY='0.45rem' marginX='0.1rem'>
-            <GenreList selectedGenre={gameQuery.genre} onSelectGenre={(genre) => setGameQuery({...gameQuery, genre})}/>
+            <GenreList selectedGenreId={gameQuery.genreId} onSelectGenre={(genre) => setGameQuery({...gameQuery, genreId: genre.id})}/>
           </GridItem>
         </Show>
         <GridItem area='main' >
             <GameHeading gameQuery={gameQuery}/>
-              <PlatformSelector selectedPlatform={gameQuery.platform} onSelectPlatform={ (platform) => setGameQuery({...gameQuery, platform})}/>
+              <PlatformSelector selectedPlatformId={gameQuery.platformId} onSelectPlatform={ (platform) => setGameQuery({...gameQuery, platformId: platform.id})}/>
               <SortSelector sortOrder={gameQuery.sortOrder} onSelectSortOrder={(sortOrder) => setGameQuery({...gameQuery, sortOrder})}/>
           <GameGrid gameQuery={gameQuery}/>
         </GridItem>
