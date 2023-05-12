@@ -2,10 +2,12 @@ import { Game } from '../interfaces/Game';
 import { Badge } from '@chakra-ui/react';
 
 interface Props {
-	score: number;
+	score?: number;
 }
 
 const CriticScore = ({ score }: Props) => {
+  if(!score) return null;
+  
 	let background = score > 80 ? 'green' : score > 50 ? 'yellow' : 'red';
 
 	return (
