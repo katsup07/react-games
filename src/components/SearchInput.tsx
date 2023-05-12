@@ -13,6 +13,15 @@ const SearchInput = () => {
     const searchText = searchInput?.current?.value;
     if(searchText)
       setSearchText(searchText);
+    
+   clearInputValue();
+  }
+
+  function clearInputValue(){
+    if(searchInput.current)
+      setTimeout(() => {
+          searchInput!.current!.value = ''
+      }, 1000);
   }
   
 	return (
