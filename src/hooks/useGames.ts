@@ -21,8 +21,6 @@ const useGames = () => {
 				},
 			}),
 		getNextPageParam: (lastPage, allPages) => {
-			console.log('getting next page...');
-			console.log('lastPage.results.length = ', lastPage.results.length);
 			// return lastPage.results.length > 0 ? allPages.length + 1 : undefined;
 			return lastPage.next ? allPages.length + 1 : undefined;
 		},
