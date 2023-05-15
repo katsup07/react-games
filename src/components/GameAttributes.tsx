@@ -3,14 +3,14 @@ import genres from '../data/genres';
 import platforms from '../data/platforms';
 import CriticScore from './CriticScore';
 import DefinitionItem from './DefinitionItem';
-import { Game } from '../interfaces/Game';
+import Game from '../interfaces/Game';
 
-interface Props{
-  game?: Game;
+interface Props {
+	game?: Game;
 }
 
-const GameAttributes = ({game}: Props) => {
-  const platforms = game?.parent_platforms.map(({ platform }) => (
+const GameAttributes = ({ game }: Props) => {
+	const platforms = game?.parent_platforms.map(({ platform }) => (
 		<Text key={platform.id}>{platform.name}</Text>
 	));
 	const genres = game?.genres.map((genre) => (

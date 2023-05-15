@@ -1,4 +1,4 @@
-import { Game } from '../interfaces/Game';
+import Game from '../interfaces/Game';
 import { Badge } from '@chakra-ui/react';
 
 interface Props {
@@ -6,8 +6,8 @@ interface Props {
 }
 
 const CriticScore = ({ score }: Props) => {
-  if(!score) return null;
-  
+	if (!score) return null;
+
 	let background = score > 80 ? 'green' : score > 50 ? 'yellow' : 'red';
 
 	return (

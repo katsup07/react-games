@@ -5,7 +5,7 @@ export interface Results {
 	data: { 480: string; max: string };
 }
 
-export interface GameTrailer {
+export default interface GameTrailer {
 	count: number;
 	results: Results[];
 }
