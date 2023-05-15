@@ -10,6 +10,7 @@ import GameTrailer from './GameTrailer';
 import React from 'react'
 import ReactPlayer from 'react-player/youtube'
 import MGameTrailer from './MGameTrailer';
+import ScreenShots from './ScreenShots';
 
 // Only loads the YouTube player
 
@@ -28,6 +29,7 @@ const GameDetailPage = () => {
 			<ExpandableText content={game.description_raw}></ExpandableText>
 			<GameAttributes game={game} />
       <MGameTrailer id={id!}/>
+      <ScreenShots id={id!}/>
 		</>
 	);
 };

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import APIClient from "../services/api-client";
-import { Mtrailer } from "../interfaces/MTrailer";
+import { Mtrailer } from "../interfaces/Mtrailer";
 
 
 const useMtrailers = (id: string) => {
