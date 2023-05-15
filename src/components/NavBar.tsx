@@ -10,7 +10,7 @@ const NavBar = () => {
 	return (
 		<HStack justifyContent='space-between' padding='10px'>
 			<Link to="/" onClick={() => gameQuery.setSearchText('')}>
-			  <Image src={logo} boxSize='60px'/>
+			  <Image src={logo} boxSize='60px' objectFit='cover' />
 			</Link>
       <SearchInput/>
       <ColorModeSwitch/>

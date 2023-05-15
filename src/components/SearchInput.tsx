@@ -3,8 +3,11 @@ import { Input, InputGroup, InputLeftElement } from '@chakra-ui/react';
 import { FormEvent } from 'react';
 import { BsSearch } from 'react-icons/bs';
 import useGameQueryStore from '../store';
+import { Navigate, redirect, useParams, useNavigate } from 'react-router-dom';
 
 const SearchInput = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
   const searchInput = useRef<HTMLInputElement>(null);
   const setSearchText = useGameQueryStore(s => s.setSearchText); // only dependent on this function, won't rerender when other values change
 
@@ -13,7 +16,10 @@ const SearchInput = () => {
     const searchText = searchInput?.current?.value;
     if(searchText)
       setSearchText(searchText);
-    
+
+    if(id) // not on homepage
+      navigate('/');
+      
    clearInputValue();
   }
 

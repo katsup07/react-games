@@ -15,7 +15,7 @@ const GameGrid = () => {
 		hasNextPage,
 	} = useGames();
 	const skeletons = [...Array(15).keys()]; // placeholders
-	console.log('data: ', data);
+
 	if (error) return <Text>{error.message}</Text>;
 
   const totalFetchedGamesCount = data?.pages.reduce((total, page) => total + page.results.length,0);

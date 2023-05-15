@@ -1,4 +1,4 @@
-import { SimpleGrid, Image, Heading, Spinner } from '@chakra-ui/react';
+import { SimpleGrid, Image, Heading, Spinner, Box } from '@chakra-ui/react';
 import useScreenShots from '../hooks/useScreenShots';
 
 interface Props {
@@ -13,16 +13,13 @@ const ScreenShots = ({ id }: Props) => {
 	if (error) throw error;
 
 	return (
-		<>
-			<Heading as='h1' paddingTop='1rem'>
-				Screen Shots
-			</Heading>
-			<SimpleGrid columns={{ base: 1, md: 2 }} spacing={1.5}>
+		<Box>
+			<SimpleGrid columns={{ base: 1, md: 2 }} spacing={1}>
 				{data?.results.map((screenShot) => (
 					<Image key={screenShot.id} src={screenShot.image} />
 				))}
 			</SimpleGrid>
-		</>
+		</Box>
 	);
 };
 

@@ -1,4 +1,4 @@
-import { Heading, Spinner, Text } from '@chakra-ui/react';
+import { Box, Heading, Spinner, Text } from '@chakra-ui/react';
 import useMTrailers from '../hooks/useMTrailers';
 
 interface Props {
@@ -18,15 +18,14 @@ const MGameTrailer = ({ id }: Props) => {
 
 	const firstTrailer = data?.results[0];
 	return (
-		<>
-    <Heading as='h1'>Trailer</Heading>
+		<Box paddingBottom={2} paddingTop={3}>
       <video
         src={firstTrailer?.data['480']}
         poster={firstTrailer?.preview}
         controls>
         MTrailers
       </video>
-    </>
+    </Box>
 	);
 };
 
