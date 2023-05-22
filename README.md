@@ -1,4 +1,4 @@
-# React-Games
+# react-games
 
 A user interface for an online video game store. Made with [React.js](https://react.dev/), [chakra](https://chakra-ui.com/), and [TypeScript](https://www.typescriptlang.org/). <br>
 
