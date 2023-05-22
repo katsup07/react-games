@@ -1,6 +1,6 @@
-# gamer-frontend
+# react-games
 
-A user interface for an online video game store. Made with [React.js](https://react.dev/), [chakra](https://chakra-ui.com/), and [TypeScript](https://www.typescriptlang.org/). <br>
+A user interface for an online video game store. Made with [React.js](https://react.dev/), [React Query](https://tanstack.com/query/v3/), [chakra](https://chakra-ui.com/), [zustand](https://www.npmjs.com/package/zustand) and [TypeScript](https://www.typescriptlang.org/). <br>
 
 ## Install for development
 navigate into the directory and run <br>
