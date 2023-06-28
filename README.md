@@ -6,10 +6,10 @@ A user interface for an online video game store. Made with [React.js](https://re
 The site is live [here](https://react-games-swart.vercel.app/).
 
 ## Install for development
-navigate into the directory and run <br>
+Download files, navigate into root directory, and then run <br>
 ```bash
 npm install
 npm run dev 
 ```
-app will be live on localhost:5173.
+App will be live on localhost:5173.
 
