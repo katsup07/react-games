@@ -11,7 +11,7 @@ interface Props {
 }
 
 const GameCard = ({ game }: Props) => {
-	const platforms = game.parent_platforms.map(({ platform }) => platform);
+	const platforms = game?.parent_platforms?.map(({ platform }) => platform);
 	const { metacritic: metacriticScore } = game;
 	const croppedImageUrl = getCroppedImageUrl(game.background_image);
 
