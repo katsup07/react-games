@@ -6,9 +6,9 @@ export interface FetchResponse<T> {
 }
 
 const axiosInstance = axios.create({
-	baseURL: 'https://api.rawg.io/api',
+	baseURL: 'https://api.rawg.io/api', //prepended to all requests: https://api.rawg.io/api...
 	params: {
-		key: 'f433d4594dbe480c99c45012b24ee1bc',
+		key: 'f433d4594dbe480c99c45012b24ee1bc', // appended at end of url: ...hollow-knight?key=f433d4594dbe480c99c45012b24ee1bc
 	},
 });
 
@@ -23,7 +23,7 @@ class APIClient<T> {
 
 	get = (id: number | string) => {
 		return axiosInstance
-			.get<T>(this.endpoint + '/' + id)
+			.get<T>(this.endpoint + '/' + id) // 'https://api.rawg.io/api/games/hollow-knight?key=f433d4594dbe480c99c45012b24ee1bc'
 			.then((res) => res.data);
 	};
 

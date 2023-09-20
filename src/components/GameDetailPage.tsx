@@ -23,13 +23,13 @@ const GameDetailPage = () => {
 		<>
 			<SimpleGrid columns={{ base: 1, md: 2 }}>
 				<Box>
-          <Heading>{game.name}</Heading>
-          <ExpandableText content={game.description_raw}></ExpandableText>
-          <GameAttributes game={game} />
-        </Box>
+					<Heading>{game.name}</Heading>
+					<ExpandableText content={game.description_raw}></ExpandableText>
+					<GameAttributes game={game} />
+				</Box>
 				<Box>
-				  <MGameTrailer id={id!} />
-				  <ScreenShots id={id!} />
+					<MGameTrailer id={id!} />
+					<ScreenShots id={id!} />
 				</Box>
 			</SimpleGrid>
 		</>
